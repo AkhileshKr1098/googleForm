@@ -10,8 +10,18 @@ export class CrudService {
   private http:HttpClient
   ) { }
 
+  base_url = 'https://educatorbox.com/Development/API/'
+
   get_user(){
-    return  this.http.get('https://educatorbox.com/Development/API/user_data.php')
+    return  this.http.get(`${this.base_url}get_userdata.php`)
+  }
+
+  post_user(data:any){
+     return this.http.post(`${this.base_url}user_insert.php`, data) 
+  }
+  
+  put_user(data:any, id:any){
+    return  this.http.put(`${this.base_url}user_update.php/${id}`,data)
   }
 
 }
