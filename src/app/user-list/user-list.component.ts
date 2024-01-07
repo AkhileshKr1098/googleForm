@@ -38,7 +38,8 @@ url:string ='https://educatorbox.com/Development/assets/photo/'
 
   }
   edit_block(data:any){
-
+    console.log(data);
+    
   }
   delete_block(data:any){
 

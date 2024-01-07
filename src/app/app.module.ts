@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { UpdateFormComponent } from './update-form/update-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatSortModule } from '@angular/material/sort';
     UserformComponent,
     LoginPageComponent,
     AdminHomeComponent,
-    UserListComponent
+    UserListComponent,
+    UpdateFormComponent
   ],
   imports: [
     BrowserModule,
