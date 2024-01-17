@@ -20,6 +20,9 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { UpdateFormComponent } from './update-form/update-form.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import { UpdateFormComponent } from './update-form/update-form.component';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatMenuModule,
+    MatListModule
 
   ],
   providers: [],
