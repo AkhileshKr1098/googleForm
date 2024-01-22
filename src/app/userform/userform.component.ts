@@ -22,15 +22,21 @@ export class UserformComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      designation: ['', Validators.required],
       name: ['', Validators.required],
       father_name: ['', Validators.required],
       dob: ['', Validators.required],
+      blodgroup: ['', Validators.required],
       aadhar_no: ['', Validators.required],
       dl: ['', Validators.required],
       mobile_no: ['', Validators.required],
       email: ['', Validators.required],
       address: ['', Validators.required],
+      village: ['', Validators.required],
+      post: ['', Validators.required],
+      ps: ['', Validators.required],
+      dist: ['', Validators.required],
+      state: ['', Validators.required],
+      pincode: ['', Validators.required],
     })
   }
 
@@ -44,7 +50,6 @@ export class UserformComponent implements OnInit {
     
 
     const userdata  =  new FormData()
-    userdata.append('designation', this.userForm.get('designation')?.value)
     userdata.append('name', this.userForm.get('name')?.value)
     userdata.append('father_name', this.userForm.get('father_name')?.value)
     userdata.append('dob', this.userForm.get('dob')?.value)

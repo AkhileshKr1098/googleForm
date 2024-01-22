@@ -7,12 +7,12 @@
 
 #form_area{
     width: 60%;
-    margin: 10px auto;
+    margin: 0px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 10%;
     background-color: white;
+    padding: 10% 10% 10px 10%; 
 }
 
 mat-form-field{
@@ -36,4 +36,22 @@ mat-form-field{
   img {
     width: 40%;
     height: 100%; 
+  }
+
+  .tandc{
+    width: 60%;
+    margin: 0px auto;
+    padding: 10%;
+    background-color: white;
+  }
+
+  ul li{
+    font-size: 15px;
+    padding: 8px;
+    text-align: justify;
+    line-height: 25px;
+  }
+
+  .tandc button{
+     margin-left: 50%;
   }
