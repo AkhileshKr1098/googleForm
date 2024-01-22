@@ -4,17 +4,18 @@ import { UserformComponent } from './userform/userform.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { PrintPageComponent } from './print-page/print-page.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
-  {path:'', component:UserformComponent},
-  {path:'login',component:AdminHomeComponent},
-  {path:'userlist', component:UserListComponent},
+  {path:'', component:HomepageComponent},
+  // {path:'', component:PrintPageComponent},
 
-  {path:'home', component:AdminHomeComponent, children:[
-    {path:'', component:LoginPageComponent},
-    {path:'userlist', component:UserListComponent},
-    {path:'ho', component:UserListComponent},
-  ]}
+  {path:'admin', loadChildren : () => import('../app/admin/admin.module').then((res)=>res.AdminModule)},
+  {path: 'user',component: UserformComponent}
+
+
+
 ];
 
 @NgModule({

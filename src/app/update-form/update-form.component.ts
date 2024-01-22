@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../crud.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-form',
@@ -16,8 +17,12 @@ export class UpdateFormComponent implements OnInit{
   sign_img: any;
   constructor(
     private fb: FormBuilder,
-    private _crud:CrudService
-  ) { }
+    private _crud:CrudService,
+    private _router:Router
+  ) {
+
+    const abc  = this._router.getCurrentNavigation()?.extras
+   }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({

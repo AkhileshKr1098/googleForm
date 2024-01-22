@@ -36,6 +36,13 @@ export class UserformComponent implements OnInit {
 
 
   OnSubmit(){
+    if (!this.userForm.valid) {
+      alert("Fill all the fildes..")
+        return
+    }else{
+
+    
+
     const userdata  =  new FormData()
     userdata.append('designation', this.userForm.get('designation')?.value)
     userdata.append('name', this.userForm.get('name')?.value)
@@ -53,7 +60,7 @@ export class UserformComponent implements OnInit {
     this._crud.post_user(userdata).subscribe(
       (res:any)=>{
         console.log(res);
-        if(res == 1){
+        if(res.success == 1){
           alert("data insert successfully");
         }
       },
@@ -63,7 +70,7 @@ export class UserformComponent implements OnInit {
       }
     )
 
-
+    }
   }
 
 

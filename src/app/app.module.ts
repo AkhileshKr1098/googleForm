@@ -22,6 +22,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { UpdateFormComponent } from './update-form/update-form.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
+import { PrintPageComponent } from './print-page/print-page.component';
+import { ViewportComponent } from './viewport/viewport.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
@@ -32,7 +35,10 @@ import {MatListModule} from '@angular/material/list';
     LoginPageComponent,
     AdminHomeComponent,
     UserListComponent,
-    UpdateFormComponent
+    UpdateFormComponent,
+    PrintPageComponent,
+    ViewportComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
