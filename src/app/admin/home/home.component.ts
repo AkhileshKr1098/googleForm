@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   name = 'Admin'
+  
   constructor(
     private _router: Router
-  ) {
-    
-  }
+  ) {}
+
   ImgUrl: string = ''
   staffLogin: boolean = true
   onMenu: boolean = true
@@ -22,6 +22,7 @@ export class HomeComponent {
   onProfile() {
 
   }
+
   LeadSubMenu() {
     this.onLeadSubMenu = !this.onLeadSubMenu;
   }
@@ -29,6 +30,7 @@ export class HomeComponent {
   logout() {
     this._router.navigate(['/'])
   }
+
   sidebar(){
     if (this.onMenu == false) {
       this.onMenu = true

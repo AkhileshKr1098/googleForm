@@ -14,10 +14,7 @@ const routes: Routes = [
   {path:'login', component: LoginPageComponent},
   {path:'admin', loadChildren : () => import('../app/admin/admin.module').then((res)=>res.AdminModule)},
   {path:'user', loadChildren : ()=> import('../app/user/user.module').then((res)=>res.UserModule)},
-  {path: 'user',component: UserformComponent}
-
-
-
+  {path: 'userform',component: UserformComponent},
 ];
 
 @NgModule({

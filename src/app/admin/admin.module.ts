@@ -54,8 +54,6 @@ import {MatListModule} from '@angular/material/list';
     MatPaginatorModule,
     MatSortModule,
     MatMenuModule,
-    
-
   ]
 })
 export class AdminModule { }
