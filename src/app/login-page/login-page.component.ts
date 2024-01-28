@@ -40,7 +40,7 @@ export class LoginPageComponent {
             this._router.navigate(['/admin'])
           }
           if (res.uid[0].deg == 'user') {
-            this._router.navigate(['/admin'])
+            this._router.navigate(['/user'])
           }
         }
 
