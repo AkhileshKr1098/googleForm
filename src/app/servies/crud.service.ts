@@ -11,8 +11,7 @@ export class CrudService {
     private http: HttpClient
 
   ) {
-    alert("okk")
-   }
+  }
 
 
   base_url = 'https://educatorbox.com/Development/API/'
