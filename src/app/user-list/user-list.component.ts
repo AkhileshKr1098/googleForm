@@ -2,8 +2,8 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, } from '@angular/material/paginator';
 import {MatSort } from '@angular/material/sort';
 import {MatTableDataSource,} from '@angular/material/table';
-import { CrudService } from '../crud.service';
 import { Router } from '@angular/router';
+import { CrudService } from '../servies/crud.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CrudService } from '../crud.service';
+import { CrudService } from '../servies/crud.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,12 +13,13 @@ export class LoginPageComponent {
   loginForm !: FormGroup
   constructor(
     private FromBuilder: FormBuilder,
-    private service: CrudService,
-    private Router: Router
+    private _crud: CrudService,
+    private _router: Router
   ) {
     localStorage.removeItem
     localStorage.clear()
   }
+
 
   ngOnInit(): void {
     this.loginForm = this.FromBuilder.group({
@@ -27,10 +28,26 @@ export class LoginPageComponent {
     })
   }
 
-
-
-
   Std_login() {
-    
+    console.log(this.loginForm.value);
+
+    this._crud.login(this.loginForm.value).subscribe(
+      (res: any) => {
+        console.log(res);
+        console.log(res.uid[0]);
+        if (res.success == true) {
+          if (res.uid[0].deg == 'admin') {
+            this._router.navigate(['/admin'])
+          }
+          if (res.uid[0].deg == 'user') {
+            this._router.navigate(['/admin'])
+          }
+        }
+
+
+
+      }
+    )
+
   }
 }

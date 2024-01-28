@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from '../crud.service';
 import { Router } from '@angular/router';
+import { CrudService } from '../servies/crud.service';
 
 @Component({
   selector: 'app-print-page',

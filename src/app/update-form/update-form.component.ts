@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CrudService } from '../crud.service';
 import { Router } from '@angular/router';
+import { CrudService } from '../servies/crud.service';
 
 @Component({
   selector: 'app-update-form',
