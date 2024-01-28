@@ -11,7 +11,7 @@ import { CrudService } from 'src/app/crud.service';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent {
-  displayedColumns: string[] = ['id', 'designation', 'name', 'mobile_no', 'reg_no', 'photo', 'action'];
+  displayedColumns: string[] = ['id','name','post','reg_no', 'email','mobile_no', 'photo', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
