@@ -1,5 +1,5 @@
 <div class="head">
-    <span class="add_form_title">User Details</span>
+    <span class="add_form_title">All Sadasya</span>
 </div>
 <div class="count_area">
     <span class="notice_text">Total :5</span>
@@ -15,24 +15,29 @@
                 paginatorRef.pageSize)+(i+1)}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="designation">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Employee Name</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.designation}}</td>
-        </ng-container>
-
         <ng-container matColumnDef="name">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>name </th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.name}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="mobile_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Aadhar Number</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.mobile_no}}</td>
+        <ng-container matColumnDef="post">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Post</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.post}}</td>
         </ng-container>
 
         <ng-container matColumnDef="reg_no">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>IFSC</th>
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Registration No</th>
             <td class="data" mat-cell *matCellDef="let row">{{row.reg_no}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mobile_no">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Mobile no</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.mobile_no}}</td>
         </ng-container>
 
      
