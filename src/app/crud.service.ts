@@ -14,7 +14,10 @@ export class CrudService {
   base_url = 'https://educatorbox.com/Development/API/'
   print_data =  new BehaviorSubject({})
 
-
+  
+  login(data:any){
+    return this.http.post(`${this.base_url}/login`, data)
+  }
   get_user(){
     return  this.http.get(`${this.base_url}get_userdata.php`)
   }

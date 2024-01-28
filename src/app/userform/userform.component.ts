@@ -17,7 +17,7 @@ export class UserformComponent implements OnInit {
   sign_img: any;
   constructor(
     private fb: FormBuilder,
-    private _crud:CrudService
+    private _crud: CrudService
   ) { }
 
   ngOnInit(): void {
@@ -41,15 +41,10 @@ export class UserformComponent implements OnInit {
   }
 
 
-  OnSubmit(){
-    if (!this.userForm.valid) {
-      alert("Fill all the fildes..")
-        return
-    }else{
+  OnSubmit() {
+    console.log(this.userForm.value);
 
-    
-
-    const userdata  =  new FormData()
+    const userdata = new FormData()
     userdata.append('name', this.userForm.get('name')?.value)
     userdata.append('father_name', this.userForm.get('father_name')?.value)
     userdata.append('dob', this.userForm.get('dob')?.value)
@@ -58,28 +53,35 @@ export class UserformComponent implements OnInit {
     userdata.append('mobile_no', this.userForm.get('mobile_no')?.value)
     userdata.append('email', this.userForm.get('email')?.value)
     userdata.append('address', this.userForm.get('address')?.value)
+    userdata.append('dist', this.userForm.get('dist')?.value)
+    userdata.append('blodgroup', this.userForm.get('blodgroup')?.value)
+    userdata.append('village', this.userForm.get('village')?.value)
+    userdata.append('post', this.userForm.get('post')?.value)
+    userdata.append('ps', this.userForm.get('ps')?.value)
+    userdata.append('state', this.userForm.get('state')?.value)
+    userdata.append('pincode', this.userForm.get('pincode')?.value)
     userdata.append('reg_no', 'REG202401')
     userdata.append('photo', this.profile_img)
     userdata.append('sign', this.sign_img)
 
     this._crud.post_user(userdata).subscribe(
-      (res:any)=>{
+      (res: any) => {
         console.log(res);
-        if(res.success == 1){
+        if (res.success == 1) {
           alert("data insert successfully");
         }
       },
-      (error)=>{
+      (error) => {
         console.log(error);
-        
+
       }
     )
 
-    }
+
   }
 
 
-  onProfile(files: any) {    
+  onProfile(files: any) {
     if (files.length === 0) {
       return;
     }

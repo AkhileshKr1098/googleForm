@@ -1,4 +1,18 @@
 <div id="wrapper">
-    <input type="text" placeholder="Enter Username">
-    <input type="password" placeholder="Enter Password">
+    <div id="login_header">
+        <h2> Login</h2>
+    </div>
+    <div id="login_main">
+        <br>
+        <div id="login_box"><br><br>
+            <form [formGroup]="loginForm" >
+                <input type="text" placeholder="Enter Username" formControlName="username">
+                <input type="password" placeholder="Enter Password" formControlName="password" >
+            <button mat-button mat-raised-button color="primary" (click)="Std_login()">
+                Login Now
+            </button>
+        </form>
+
+        </div>
+    </div>
 </div>

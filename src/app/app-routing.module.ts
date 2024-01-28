@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'', component:HomepageComponent},
   // {path:'', component:PrintPageComponent},
 
+  {path:'login', component: LoginPageComponent},
   {path:'admin', loadChildren : () => import('../app/admin/admin.module').then((res)=>res.AdminModule)},
   {path: 'user',component: UserformComponent}
 

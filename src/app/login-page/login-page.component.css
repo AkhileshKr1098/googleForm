@@ -1,0 +1,39 @@
+#login_header {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(29, 31, 35);
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+#login_main {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-image: url("../../assets/login.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+#login_box {
+    width: 320px;
+    height: 300px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+form  input{
+    width: 90%;
+    height: 35px;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    font-size: 20px;
+}
