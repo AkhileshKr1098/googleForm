@@ -1,19 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CrudService } from 'src/app/servies/crud.service';
-import { AddSubAdminComponent } from '../add-sub-admin/add-sub-admin.component';
 
 @Component({
-  selector: 'app-sub-admin',
-  templateUrl: './sub-admin.component.html',
-  styleUrls: ['./sub-admin.component.css']
+  selector: 'app-sadsayalist',
+  templateUrl: './sadsayalist.component.html',
+  styleUrls: ['./sadsayalist.component.css']
 })
-export class SubAdminComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'mobile','username', 'password', 'status', 'action'];
+export class SadsayalistComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'post', 'reg_no', 'email', 'mobile_no', 'photo', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -22,20 +20,12 @@ export class SubAdminComponent implements OnInit {
   login_data : any
   constructor(
     private _crud: CrudService,
-    private _routing: Router,
-    private dilog : MatDialog
+    private _routing: Router
   ) { }
 
   ngOnInit() {
-   this.get_data()
-
-    this.login =  localStorage.getItem('loginData')
-    this.login_data = JSON.parse(this.login)
-
-  }
-
-  get_data(){
-    this._crud.get_sub_admin().subscribe(
+    
+    this._crud.get_user().subscribe(
       (res: any) => {
         console.log(res);
         this.dataSource = new MatTableDataSource(res.data);
@@ -47,30 +37,30 @@ export class SubAdminComponent implements OnInit {
 
       }
     )
+
+    this.login =  localStorage.getItem('loginData')
+    this.login_data = JSON.parse(this.login)
   }
 
   applyFilter(data: any) {
 
   }
 
-  onAdd() {
-    this.dilog.open(AddSubAdminComponent)
+  onEdit(data: any) {
+    console.log(data);
+
   }
 
   onDelete(data: any) {
 
-    const formdata  = new  FormData()
-    formdata.append('id',data )
-    this._crud.delete_sub_admin(formdata).subscribe(
-      (res:any)=>{
-        if (res.success == 1) {
-          this.get_data()
-          alert('Delete Success')
-        }
-      }
-    )
   }
 
-  
+  onPrint(data: any) {
+
+    this._crud.print_data.next(data)
+
+    this._routing.navigate(['printPage'])
+
+  }
 
 }

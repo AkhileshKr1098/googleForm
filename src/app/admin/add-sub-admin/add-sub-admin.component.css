@@ -1,0 +1,27 @@
+#wrapper{
+    width: 100%;
+    height: auto;
+    background-color: whitesmoke;
+    /* cursor: url('../../../assets/icons8-leaf-64.png'), auto; */
+    
+}
+
+#form_area{
+    width: 60%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10% 10% 10px 10%; 
+   
+}
+
+mat-form-field{
+    width: 100%;
+
+}
+
+button{
+   margin-left: 50%;
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,18 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-
-  name = 'Admin'
+export class HomeComponent implements OnInit {
+  login: any
+  login_data: any
   constructor(
     private _router: Router
   ) {
+
+  }
+  ngOnInit() {
+    this.login = localStorage.getItem('loginData')
+    this.login_data = JSON.parse(this.login)
+
 
   }
   ImgUrl: string = ''

@@ -33,4 +33,17 @@ export class CrudService {
     return this.http.put(`${this.base_url}user_update.php/${id}`, data)
   }
 
+  add_sub_admin(data:any){
+    return this.http.post(`${this.base_url}/sub_admin.php`,data)
+  }
+
+  get_sub_admin(){
+    return this.http.get(`${this.base_url}/get_sub_admin.php`)
+  }
+
+  delete_sub_admin(id:any){
+    return  this.http.post(`${this.base_url}/sub_admin_delete.php`, id)
+  }
+  
+
 }

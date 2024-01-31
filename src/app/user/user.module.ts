@@ -18,10 +18,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { SadsayalistComponent } from './sadsayalist/sadsayalist.component';
+import { SadsayaUpdateComponent } from './sadsaya-update/sadsaya-update.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    SadsayalistComponent,
+    SadsayaUpdateComponent
   ],
   imports: [
     CommonModule,
