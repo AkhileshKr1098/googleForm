@@ -12,9 +12,10 @@ export class UpdateFormComponent implements OnInit{
   userForm !: FormGroup
   profile_url: any = "../../assets/default_profile.png";
   profile_img: any;
-
   sign_url: any = "../../assets/sign.png";
   sign_img: any;
+  regno : string = 'REG202401'
+
   constructor(
     private fb: FormBuilder,
     private _crud:CrudService,
@@ -36,6 +37,8 @@ export class UpdateFormComponent implements OnInit{
       email: ['', Validators.required],
       address: ['', Validators.required],
     })
+
+    this.send_mail()
   }
 
 
@@ -50,7 +53,7 @@ export class UpdateFormComponent implements OnInit{
     userdata.append('mobile_no', this.userForm.get('mobile_no')?.value)
     userdata.append('email', this.userForm.get('email')?.value)
     userdata.append('address', this.userForm.get('address')?.value)
-    userdata.append('reg_no', 'REG202401')
+    userdata.append('reg_no', this.regno)
     userdata.append('photo', this.profile_img)
     userdata.append('sign', this.sign_img)
 
@@ -59,6 +62,7 @@ export class UpdateFormComponent implements OnInit{
         console.log(res);
         if(res == 1){
           alert("data insert successfully");
+          this.send_mail()
         }
       },
       (error)=>{
@@ -69,6 +73,24 @@ export class UpdateFormComponent implements OnInit{
 
 
   }
+
+
+
+send_mail(){
+  alert('ok')
+     const fromdata =  new FormData()
+     fromdata.append('to', 'tech.kr.akhi@gmail.com')
+     fromdata.append('company', 'Green Soft')
+     fromdata.append('name', 'akhi')
+     fromdata.append('reg', this.regno)
+
+     this._crud.send_mail(fromdata).subscribe(
+      (res:any)=>{
+        console.log(res);
+        
+      }
+     )
+}
 
 
   onProfile(files: any) {    

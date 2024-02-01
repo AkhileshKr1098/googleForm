@@ -45,5 +45,8 @@ export class CrudService {
     return  this.http.post(`${this.base_url}/sub_admin_delete.php`, id)
   }
   
+  send_mail(data:any){
+    return this.http.post(`${this.base_url}send_email.php`, data)
+  }
 
 }

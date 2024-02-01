@@ -15,6 +15,7 @@ const routes: Routes = [
   {path:'admin', loadChildren : () => import('../app/admin/admin.module').then((res)=>res.AdminModule)},
   {path:'user', loadChildren : ()=> import('../app/user/user.module').then((res)=>res.UserModule)},
   {path: 'userform',component: UserformComponent},
+  {path :'printpage', component : PrintPageComponent}
 ];
 
 @NgModule({

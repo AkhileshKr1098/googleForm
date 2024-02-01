@@ -20,9 +20,9 @@
             <td class="data" mat-cell *matCellDef="let row">{{row.name}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="post">
-            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Post</th>
-            <td class="data" mat-cell *matCellDef="let row">{{row.post}}</td>
+        <ng-container matColumnDef="father">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Father`s Name</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.father_name}}</td>
         </ng-container>
 
         <ng-container matColumnDef="reg_no">
@@ -55,7 +55,7 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row"> 
                 <mat-icon *ngIf="login_data.status == 0" (click)="onEdit(row)"  title="update">edit</mat-icon>
-                <mat-icon   title="print">print</mat-icon>
+                <button mat-icon-button (click)="onPrint(row)" ><mat-icon   title="print">print</mat-icon></button>
             </td>
         </ng-container>
 

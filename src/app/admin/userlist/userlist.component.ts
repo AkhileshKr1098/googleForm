@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CrudService } from 'src/app/servies/crud.service';
+import { SharedService } from 'src/app/servies/shared.service';
 
 @Component({
   selector: 'app-userlist',
@@ -11,7 +12,7 @@ import { CrudService } from 'src/app/servies/crud.service';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent {
-  displayedColumns: string[] = ['id','name','post','reg_no', 'email','mobile_no', 'photo', 'action'];
+  displayedColumns: string[] = ['id','reg_no','name','father', 'email','mobile_no', 'photo', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -19,7 +20,8 @@ export class UserlistComponent {
 
   constructor(
     private _crud: CrudService,
-    private _routing: Router
+    private _routing: Router,
+    private _shared : SharedService
   ) { }
 
   ngOnInit() {
@@ -52,9 +54,8 @@ export class UserlistComponent {
 
   onPrint(data: any) {
 
-    this._crud.print_data.next(data)
-
-    this._routing.navigate(['printPage'])
+      this._shared.print_data.next(data)
+    this._routing.navigate(['printpage'])
 
   }
 

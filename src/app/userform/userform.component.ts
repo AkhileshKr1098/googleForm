@@ -15,6 +15,7 @@ export class UserformComponent implements OnInit {
 
   sign_url: any = "../../assets/sign.png";
   sign_img: any;
+  regno : string = 'REG0214'
   constructor(
     private fb: FormBuilder,
     private _crud: CrudService
@@ -38,6 +39,8 @@ export class UserformComponent implements OnInit {
       state: ['', Validators.required],
       pincode: ['', Validators.required],
     })
+    this.send_mail()
+
   }
 
 
@@ -60,7 +63,7 @@ export class UserformComponent implements OnInit {
     userdata.append('ps', this.userForm.get('ps')?.value)
     userdata.append('state', this.userForm.get('state')?.value)
     userdata.append('pincode', this.userForm.get('pincode')?.value)
-    userdata.append('reg_no', 'REG202401')
+    userdata.append('reg_no',  this.regno)
     userdata.append('photo', this.profile_img)
     userdata.append('sign', this.sign_img)
 
@@ -77,9 +80,24 @@ export class UserformComponent implements OnInit {
       }
     )
 
-
   }
 
+
+
+  send_mail(){
+       const fromdata =  new FormData()
+       fromdata.append('to', this.userForm.get('email')?.value)
+       fromdata.append('company', 'Green Soft')
+       fromdata.append('name',this.userForm.get('name')?.value)
+       fromdata.append('reg', this.regno)
+  
+       this._crud.send_mail(fromdata).subscribe(
+        (res:any)=>{
+          console.log(res);
+          
+        }
+       )
+  }
 
   onProfile(files: any) {
     if (files.length === 0) {

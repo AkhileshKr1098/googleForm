@@ -1,35 +1,195 @@
-<div>
-    <h1><b>This is a test page for printing</b><hr color=#00cc00 width=95%></h1>
-  <button class="Button Button--outline" onclick="printDiv()">Print</button>
-    <p> content content content </p>
-    <div id="printableTable">
-        <div id="wrapper">
-            <div id="left">
-                <div id="left_content">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB6rRzAYoJ6C9jLEZuNNW7c_bJWlNE77Mv7et4YxNI5Q&s" width="100%" height="300px" style="border-radius: 20px;">
-                    <input type="text" value="Employee Name">
-                    <input type="text" value="Employee Name">
-                    <input type="text" value="Employee Name">
-                    <input type="text" value="Employee Name">
-                </div>
-            </div>
-            <div id="right">
-                <h1>Employee Data</h1>
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-                <input type="text" value="Employee Name">
-            </div>
-        </div>
-    
+<div id="wrapper">
+    <div class="center">
+        <h1>Print Priview Your Form </h1>
+
     </div>
-    <p> content content content </p>
-    <p> content content content </p>
-    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
-  
-  
-  </div>
+
+    <div class="print">
+
+        <div class="container">
+            <table width="100%">
+
+                <tr>
+                    <td colspan="2">
+                        <h1>Responsive Table</h1>
+
+                    </td>
+
+                    <td rowspan="5" colspan="2">
+                        <div id="imgsign">
+                         <img src="{{imgUrl+print_data.photo}}" width="100%" height="150px">
+                        <img src="{{signUrl+print_data.sign}}" width="100%" height="50px">
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="col1">
+                        Name :
+                    </td>
+                    <td>
+                       {{print_data.name}}
+                    </td>
+
+
+                </tr>
+
+
+                <tr>
+                    <td class="col1">
+                        Father`s Name :
+                    </td>
+                    <td>
+                        {{print_data.father_name}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Date Of Birth :
+                    </td>
+                    <td>
+                        {{print_data.dob}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Licence Number :
+                    </td>
+                    <td>
+                       {{print_data.dl}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Blood group :
+                    </td>
+                    <td>
+                        {{print_data.blodgroup}}
+                    </td>
+                    <td class="col1">
+                        Aadhar Number:
+                    </td>
+                    <td>
+                        {{print_data.aadhar_no}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Mobile Number :
+                    </td>
+                    <td>
+                       {{print_data.mobile_no}}
+                    </td>
+                    <td class="col1">
+                        Email id:
+                    </td>
+                    <td>
+                        {{print_data.email}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Address :
+                    </td>
+                    <td>
+                        {{print_data.address}}
+                    </td>
+                    <td class="col1">
+                        Village :
+                    </td>
+                    <td>
+                        {{print_data.village}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        Post Office :
+                    </td>
+                    <td>
+                        {{print_data.post}}
+                    </td>
+                    <td class="col1">
+                        Police Station :
+                    </td>
+                    <td>
+                        {{print_data.ps}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col1">
+                        District :
+                    </td>
+                    <td>
+                        {{print_data.dist}}
+                    </td>
+                    <td class="col1">
+                        State :
+                    </td>
+                    <td>
+                        {{print_data.state}}
+                    </td>
+                </tr>
+
+
+            </table>
+            <br>
+            <div class="tandc">
+                <h1><b>नियम एवं शर्त
+                    </b></h1>
+                <ul>
+                    <li>मेरे द्वारा उपर्युक्त दी गई सभी जानकारी सही एवं सत्य है ।</li>
+                    <li>मैं अपनी स्वेच्छा से इस संघ का सदस्यता ग्रहण / प्राप्त कर रहा हूँ | </li>
+                    <li>मैं संघ के पदाधिकारीयो / सदस्यो द्वारा तय की गई मासिक बचत राशि देने में सक्षम हूँ । </li>
+                    <li> मैं संघ के सभी नियमों का पालन संघ में बनाए गए नियमानुसार करूंगा। मै कोई मनमानीया नहीं करूंगा।
+                    </li>
+                    <li>मैं प्रत्येक माह की निर्धारित तिथि पर संघ द्वारा निर्धारित की गई राशि को जमा करूंगा । </li>
+                    <li>मैं संघ द्वारा निर्धारित राशि को 1-3 माह लगातार भुलवश / जानबूझकर जमा नही करता हूँ तो अगले माह
+                        50/- रू
+                        अतिरिक्त निर्धारित राशि में जोड़कर जमा करूंगा । यदि राशि नही जमा करने पर सदस्यो / पदाधिकारीयो के
+                        निर्णयानुसार संघ से बाहर कर दिया जा सकता है।
+                    </li>
+                    <li>मैं संघ के निर्णयानुसार संघ की बचत जमा राशि में संशोधन / बदलाव करने पर मै सहमत रहूँगा ।
+                    </li>
+                    <li>
+                        मैं अपने जमा धन राशि सदस्यो / पदाधिकारीयों के बैठक में लिए गए निर्णयानुसार संघ के सदस्यो /
+                        सामाजिक कार्य
+                        / गरीबो की मदद करने मे सहमत रहूँगा ।
+                    </li>
+                    <li>में संघ के किसी भी सदस्यो द्वारा आपसी मतभेद यदि होता है तो उसका निपटारा / निष्पादन संघ के
+                        पदाधिकारीयो
+                        एवं सदस्यों के बीच बैठक कर समाधान हेतु मे सहमत रहूँगा ।
+                    </li>
+                    <li>में संघ के सभी निमयों को पढ़ व सुनकर समझ लिया हूँ एवं अपना हस्ताक्षर संघ पदाधिकारीयो / सदस्यो के
+                        सामने
+                        अपना हस्ताक्षर किया
+                    </li>
+
+
+                    <br>
+                    <br>
+
+                    <li> <b>नियम एवं शर्त स्वीकार  <input  type="checkbox" checked disabled></b></li>
+                </ul>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="center">
+       <button (click)="print()" mat-raised-button color="warn" > &nbsp; &nbsp;  Print &nbsp; &nbsp; </button>
+       <br><br>
+    </div>
+    <br>
+
+
+</div>
