@@ -39,8 +39,8 @@
         <ng-container matColumnDef="status">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
             <td class="data" mat-cell *matCellDef="let row">
-                <button *ngIf="row.status== 0" mat-raised-button color="warn" >EDIT </button>
-                <button *ngIf="row.status== 1" mat-raised-button color="primary" >VIEW </button>
+                <p *ngIf="row.status == 0" > Edit &  View  </p>
+                <p *ngIf="row.status == 1" >Only View </p>
             </td>
         </ng-container>
 

@@ -1,7 +1,7 @@
 <div id="wrapper">
 
     <div id="form_area">
-        <h1><b>Sub Admin Panel</b></h1>
+        <h1><b>Add Sub Admin</b></h1>
         <form [formGroup]="subAdmin">
 
 
@@ -29,13 +29,17 @@
                 <mat-label>Role</mat-label>
                 <mat-select formControlName="status">
 
-                    <mat-option value="1">Edit & View</mat-option>
-                    <mat-option value="0">Only View</mat-option>
+                    <mat-option value="0">Edit & View</mat-option>
+                    <mat-option value="1">Only View</mat-option>
 
                 </mat-select>
             </mat-form-field>
 
-            <button (click)="OnSubmit()" mat-raised-button color="primary">Submit</button>
         </form>
 
+        <mat-toolbar>
+            <button mat-dialog-close mat-raised-button color="warn">Back</button>
+            <button (click)="OnSubmit()" mat-raised-button color="primary">Submit</button>
+
+        </mat-toolbar>
     </div>

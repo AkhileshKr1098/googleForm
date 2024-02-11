@@ -9,6 +9,47 @@ import { CrudService } from '../servies/crud.service';
 })
 export class UserformComponent implements OnInit {
 
+  districtOptions = [
+    { value: 'अररिया', viewValue: 'अररिया' },
+    { value: 'अरवल', viewValue: 'अरवल' },
+    { value: 'औरंगाबाद', viewValue: 'औरंगाबाद' },
+    { value: 'बांका', viewValue: 'बांका' },
+    { value: 'बेगूसराय', viewValue: 'बेगूसराय' },
+    { value: 'भागलपुर', viewValue: 'भागलपुर' },
+    { value: 'भोजपुर', viewValue: 'भोजपुर' },
+    { value: 'बक्सर', viewValue: 'बक्सर' },
+    { value: 'दरभंगा', viewValue: 'दरभंगा' },
+    { value: 'गया', viewValue: 'गया' },
+    { value: 'गोपालगंज', viewValue: 'गोपालगंज' },
+    { value: 'जमुई', viewValue: 'जमुई' },
+    { value: 'जहानाबाद', viewValue: 'जहानाबाद' },
+    { value: 'कैमूर ( भभुआ )', viewValue: 'कैमूर ( भभुआ )' },
+    { value: 'कटिहार', viewValue: 'कटिहार' },
+    { value: 'खगड़िया', viewValue: 'खगड़िया' },
+    { value: 'किशनगंज', viewValue: 'किशनगंज' },
+    { value: 'लखीसराय', viewValue: 'लखीसराय' },
+    { value: 'मधेपुरा', viewValue: 'मधेपुरा' },
+    { value: 'मधुबनी', viewValue: 'मधुबनी' },
+    { value: 'मुंगेर', viewValue: 'मुंगेर' },
+    { value: 'मुजफ्फरपुर', viewValue: 'मुजफ्फरपुर' },
+    { value: 'नालंदा', viewValue: 'नालंदा' },
+    { value: 'नवादा', viewValue: 'नवादा' },
+    { value: 'पश्चिम चम्पारण', viewValue: 'पश्चिम चम्पारण' },
+    { value: 'पटना', viewValue: 'पटना' },
+    { value: 'पूर्वी चंपारण', viewValue: 'पूर्वी चंपारण' },
+    { value: 'पूर्णिया', viewValue: 'पूर्णिया' },
+    { value: 'रोहतास', viewValue: 'रोहतास' },
+    { value: 'सहरसा', viewValue: 'सहरसा' },
+    { value: 'समस्तीपुर', viewValue: 'समस्तीपुर' },
+    { value: 'सारण', viewValue: 'सारण' },
+    { value: 'शेखपुरा', viewValue: 'शेखपुरा' },
+    { value: 'शिवहर', viewValue: 'शिवहर' },
+    { value: 'सीतामढी', viewValue: 'सीतामढी' },
+    { value: 'सिवान', viewValue: 'सिवान' },
+    { value: 'सुपौल', viewValue: 'सुपौल' },
+    { value: 'वैशाली', viewValue: 'वैशाली' }
+  ];
+  
   userForm !: FormGroup
   profile_url: any = "../../assets/default_profile.png";
   profile_img: any;
@@ -37,7 +78,7 @@ export class UserformComponent implements OnInit {
       ps: ['', Validators.required],
       dist: ['', Validators.required],
       state: ['', Validators.required],
-      pincode: ['', Validators.required],
+      pincode: ['', Validators.required,Validators.max(6)],
     })
     this.send_mail()
 
@@ -72,6 +113,7 @@ export class UserformComponent implements OnInit {
         console.log(res);
         if (res.success == 1) {
           alert("data insert successfully");
+          this.userForm.reset()
         }
       },
       (error) => {

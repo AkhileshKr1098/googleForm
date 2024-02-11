@@ -3,7 +3,7 @@
     <div id="form_area">
         <form [formGroup]="userForm">
 
-    
+
             <mat-form-field appearance="fill">
                 <mat-label>नाम</mat-label>
                 <input matInput placeholder="नाम दर्ज करें" formControlName="name">
@@ -69,17 +69,29 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>ज़िला</mat-label>
-                <input matInput placeholder="अपने जिले का नाम दर्ज करें " formControlName="dist">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
                 <mat-label> राज्य</mat-label>
-                <input matInput placeholder="अपने राज्य का नाम दर्ज करें" formControlName="state">
+                <mat-select formControlName="dist">
+                    <mat-option value="बिहार">बिहार </mat-option>
+                  
+                </mat-select>
             </mat-form-field>
+          
+
+            <mat-form-field appearance="fill">
+                <mat-label>ज़िला</mat-label>
+                <mat-select formControlName="dist">
+                    <mat-option value="">कृपया चुनें</mat-option>
+                    <mat-option *ngFor="let option of districtOptions" [value]="option.value">{{ option.viewValue
+                        }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+          
 
             <mat-form-field appearance="fill">
                 <mat-label>पिन कोड </mat-label>
-                <input matInput placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode">
+                <input matInput  placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode" type="number"  max="6">
+
             </mat-form-field>
 
 
@@ -130,10 +142,10 @@
             </li>
 
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <li> <b>नियम एवं शर्त स्वीकार करे</b> <input type="checkbox">        </li>
+            <li> <b>नियम एवं शर्त स्वीकार करे</b> <input type="checkbox"> </li>
         </ul>
 
         <button mat-raised-button color="warn" (click)="OnSubmit()">Submit</button>
