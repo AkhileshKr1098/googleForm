@@ -49,14 +49,28 @@ export class UserformComponent implements OnInit {
     { value: 'सुपौल', viewValue: 'सुपौल' },
     { value: 'वैशाली', viewValue: 'वैशाली' }
   ];
-  
+
+
+  menber = [
+    { value: 'सामान्यअध्यक्ष' },
+    { value: 'जिला अध्यक्ष' },
+    { value: 'जिला उपाध्यक्ष' },
+    { value: 'जिला कोषाध्यक्ष' },
+    { value: 'जिला  स्तरीये  सदस्य' },
+    { value: 'प्रखंड अध्यक्ष' },
+    { value: 'प्रखंड सचिव' },
+    { value: 'प्रखंड कोषाध्यक्ष' },
+    { value: 'राज्य स्तरीये  सदस्य' },
+
+  ]
+
   userForm !: FormGroup
   profile_url: any = "../../assets/default_profile.png";
   profile_img: any;
 
   sign_url: any = "../../assets/sign.png";
   sign_img: any;
-  regno : string = 'REG0214'
+  regno: string = ''
   constructor(
     private fb: FormBuilder,
     private _crud: CrudService
@@ -64,6 +78,8 @@ export class UserformComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
+      member: ['', Validators.required],
+      cdate: ['', Validators.required],
       name: ['', Validators.required],
       father_name: ['', Validators.required],
       dob: ['', Validators.required],
@@ -78,67 +94,90 @@ export class UserformComponent implements OnInit {
       ps: ['', Validators.required],
       dist: ['', Validators.required],
       state: ['', Validators.required],
-      pincode: ['', Validators.required,Validators.max(6)],
+      pincode: [''],
     })
-    this.send_mail()
 
   }
 
 
   OnSubmit() {
-    console.log(this.userForm.value);
 
-    const userdata = new FormData()
-    userdata.append('name', this.userForm.get('name')?.value)
-    userdata.append('father_name', this.userForm.get('father_name')?.value)
-    userdata.append('dob', this.userForm.get('dob')?.value)
-    userdata.append('aadhar_no', this.userForm.get('aadhar_no')?.value)
-    userdata.append('dl', this.userForm.get('dl')?.value)
-    userdata.append('mobile_no', this.userForm.get('mobile_no')?.value)
-    userdata.append('email', this.userForm.get('email')?.value)
-    userdata.append('address', this.userForm.get('address')?.value)
-    userdata.append('dist', this.userForm.get('dist')?.value)
-    userdata.append('blodgroup', this.userForm.get('blodgroup')?.value)
-    userdata.append('village', this.userForm.get('village')?.value)
-    userdata.append('post', this.userForm.get('post')?.value)
-    userdata.append('ps', this.userForm.get('ps')?.value)
-    userdata.append('state', this.userForm.get('state')?.value)
-    userdata.append('pincode', this.userForm.get('pincode')?.value)
-    userdata.append('reg_no',  this.regno)
-    userdata.append('photo', this.profile_img)
-    userdata.append('sign', this.sign_img)
-
-    this._crud.post_user(userdata).subscribe(
+    this._crud.get_user().subscribe(
       (res: any) => {
-        console.log(res);
-        if (res.success == 1) {
-          alert("data insert successfully");
-          this.userForm.reset()
-        }
-      },
-      (error) => {
-        console.log(error);
-
+        console.log(res.data);
+        this.regno =  `REGNO${res.data.length}`
+        const num = Number(res.data[0].reg_no)
+        this.insertData(1+num)
       }
     )
 
+    console.log(this.userForm.value);
+
+   
+
+  }
+
+  insertData(reg : any){
+    console.log(reg);
+    
+    if (!this.userForm.valid) {
+      return alert('Plz.  Fill all required fildes')
+    } else {
+      const userdata = new FormData()
+      userdata.append('cdate', this.userForm.get('cdate')?.value)
+      userdata.append('member', this.userForm.get('member')?.value)
+      userdata.append('name', this.userForm.get('name')?.value)
+      userdata.append('father_name', this.userForm.get('father_name')?.value)
+      userdata.append('dob', this.userForm.get('dob')?.value)
+      userdata.append('aadhar_no', this.userForm.get('aadhar_no')?.value)
+      userdata.append('dl', this.userForm.get('dl')?.value)
+      userdata.append('mobile_no', this.userForm.get('mobile_no')?.value)
+      userdata.append('email', this.userForm.get('email')?.value)
+      userdata.append('address', this.userForm.get('address')?.value)
+      userdata.append('dist', this.userForm.get('dist')?.value)
+      userdata.append('blodgroup', this.userForm.get('blodgroup')?.value)
+      userdata.append('village', this.userForm.get('village')?.value)
+      userdata.append('post', this.userForm.get('post')?.value)
+      userdata.append('ps', this.userForm.get('ps')?.value)
+      userdata.append('state', this.userForm.get('state')?.value)
+      userdata.append('pincode', this.userForm.get('pincode')?.value)
+      userdata.append('reg_no', reg)
+      userdata.append('photo', this.profile_img)
+      userdata.append('sign', this.sign_img)
+
+      this._crud.post_user(userdata).subscribe(
+        (res: any) => {
+          console.log(res);
+          if (res.success == 1) {
+            alert("data insert successfully");
+            this.userForm.reset()
+            this.send_mail(reg)
+          }
+        },
+        (error) => {
+          console.log(error);
+
+        }
+      )
+    }
   }
 
 
 
-  send_mail(){
-       const fromdata =  new FormData()
-       fromdata.append('to', this.userForm.get('email')?.value)
-       fromdata.append('company', 'Green Soft')
-       fromdata.append('name',this.userForm.get('name')?.value)
-       fromdata.append('reg', this.regno)
-  
-       this._crud.send_mail(fromdata).subscribe(
-        (res:any)=>{
-          console.log(res);
-          
-        }
-       )
+
+  send_mail(reg:any) {
+    const fromdata = new FormData()
+    fromdata.append('to', this.userForm.get('email')?.value)
+    fromdata.append('company', 'Green Soft')
+    fromdata.append('name', this.userForm.get('name')?.value)
+    fromdata.append('reg', reg)
+
+    this._crud.send_mail(fromdata).subscribe(
+      (res: any) => {
+        console.log(res);
+
+      }
+    )
   }
 
   onProfile(files: any) {

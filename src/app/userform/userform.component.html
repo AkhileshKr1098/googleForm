@@ -3,6 +3,19 @@
     <div id="form_area">
         <form [formGroup]="userForm">
 
+            <mat-form-field appearance="fill">
+                <mat-label>सदस्य</mat-label>
+                <mat-select formControlName="member">
+                    <mat-option value="">कृपया चुनें</mat-option>
+                    <mat-option *ngFor="let option of menber" [value]="option.value">{{ option.value
+                        }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" formControlName="cdate">
+            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>नाम</mat-label>
@@ -70,8 +83,8 @@
 
             <mat-form-field appearance="fill">
                 <mat-label> राज्य</mat-label>
-                <mat-select formControlName="dist">
-                    <mat-option value="बिहार">बिहार </mat-option>
+                <mat-select formControlName="state">
+                    <mat-option  value="बिहार">बिहार </mat-option>
                   
                 </mat-select>
             </mat-form-field>
@@ -90,7 +103,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>पिन कोड </mat-label>
-                <input matInput  placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode" type="number"  max="6">
+                <input matInput  placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode" type="number" >
 
             </mat-form-field>
 
