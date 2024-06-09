@@ -58,7 +58,6 @@ export class SubAdminComponent implements OnInit {
   }
 
   onDelete(data: any) {
-
     const formdata  = new  FormData()
     formdata.append('id',data )
     this._crud.delete_sub_admin(formdata).subscribe(

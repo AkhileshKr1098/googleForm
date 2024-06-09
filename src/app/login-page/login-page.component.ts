@@ -28,6 +28,8 @@ export class LoginPageComponent {
     })
   }
 
+  
+
   Std_login() {
     console.log(this.loginForm.value);
 

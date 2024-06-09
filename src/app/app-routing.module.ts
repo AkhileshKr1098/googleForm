@@ -8,14 +8,13 @@ import { PrintPageComponent } from './print-page/print-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
-  {path:'', component:HomepageComponent},
-  // {path:'', component:PrintPageComponent},
-
-  {path:'login', component: LoginPageComponent},
+  {path: '',component: UserformComponent},
+  {path:'login',  component: LoginPageComponent, },
   {path:'admin', loadChildren : () => import('../app/admin/admin.module').then((res)=>res.AdminModule)},
   {path:'user', loadChildren : ()=> import('../app/user/user.module').then((res)=>res.UserModule)},
-  {path: 'userform',component: UserformComponent},
-  {path :'printpage', component : PrintPageComponent}
+  {path :'printpage', component : PrintPageComponent},
+  { path: '**', redirectTo: 'login' }  // Wildcard route for a 404 page
+
 ];
 
 @NgModule({

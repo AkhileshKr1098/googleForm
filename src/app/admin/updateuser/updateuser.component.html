@@ -1,7 +1,9 @@
 <div id="wrapper">
-    <div id="header">
-        <img src="../../assets/header.png" alt="">
-    </div>
+    <mat-toolbar>
+        <span>
+            Update Userdata
+        </span> <button mat-icon-button mat-dialog-close ><mat-icon>close</mat-icon></button>
+    </mat-toolbar>
     <div id="form_area">
         <form [formGroup]="userForm">
 
@@ -84,6 +86,15 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
+                <mat-label> राज्य</mat-label>
+                <mat-select formControlName="state">
+                    <mat-option  value="बिहार">बिहार </mat-option>
+                  
+                </mat-select>
+            </mat-form-field>
+          
+
+            <mat-form-field appearance="fill">
                 <mat-label>ज़िला</mat-label>
                 <mat-select formControlName="dist">
                     <mat-option value="">कृपया चुनें</mat-option>
@@ -92,22 +103,11 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label> राज्य</mat-label>
-                <mat-select formControlName="state">
-                    <mat-option value="बिहार">बिहार </mat-option>
-
-                </mat-select>
-            </mat-form-field>
-
-
-
-
-
+          
 
             <mat-form-field appearance="fill">
                 <mat-label>पिन कोड </mat-label>
-                <input matInput placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode" type="number">
+                <input matInput  placeholder="अपना पिन कोड दर्ज करें" formControlName="pincode" type="number" >
 
             </mat-form-field>
 
@@ -132,41 +132,6 @@
 
 
     </div>
-    <div class="tandc">
-        <h1><b>नियम एवं शर्त
-            </b></h1>
-        <ul>
-            <li>मेरे द्वारा उपर्युक्त दी गई सभी जानकारी सही एवं सत्य है ।</li>
-            <li>मैं अपनी स्वेच्छा से इस संघ का सदस्यता ग्रहण / प्राप्त कर रहा हूँ | </li>
-            <li>मैं संघ के पदाधिकारीयो / सदस्यो द्वारा तय की गई मासिक बचत राशि देने में सक्षम हूँ । </li>
-            <li> मैं संघ के सभी नियमों का पालन संघ में बनाए गए नियमानुसार करूंगा। मै कोई मनमानीया नहीं करूंगा। </li>
-            <li>मैं प्रत्येक माह की निर्धारित तिथि पर संघ द्वारा निर्धारित की गई राशि को जमा करूंगा । </li>
-            <li>मैं संघ द्वारा निर्धारित राशि को 1-3 माह लगातार भुलवश / जानबूझकर जमा नही करता हूँ तो अगले माह 50/- रू
-                अतिरिक्त निर्धारित राशि में जोड़कर जमा करूंगा । यदि राशि नही जमा करने पर सदस्यो / पदाधिकारीयो के
-                निर्णयानुसार संघ से बाहर कर दिया जा सकता है।
-            </li>
-            <li>मैं संघ के निर्णयानुसार संघ की बचत जमा राशि में संशोधन / बदलाव करने पर मै सहमत रहूँगा ।
-            </li>
-            <li>
-                मैं अपने जमा धन राशि सदस्यो / पदाधिकारीयों के बैठक में लिए गए निर्णयानुसार संघ के सदस्यो / सामाजिक कार्य
-                / गरीबो की मदद करने मे सहमत रहूँगा ।
-            </li>
-            <li>में संघ के किसी भी सदस्यो द्वारा आपसी मतभेद यदि होता है तो उसका निपटारा / निष्पादन संघ के पदाधिकारीयो
-                एवं सदस्यों के बीच बैठक कर समाधान हेतु मे सहमत रहूँगा ।
-            </li>
-            <li>में संघ के सभी निमयों को पढ़ व सुनकर समझ लिया हूँ एवं अपना हस्ताक्षर संघ पदाधिकारीयो / सदस्यो के सामने
-                अपना हस्ताक्षर किया
-            </li>
 
-
-            <br>
-            <br>
-
-            <li> <b>नियम एवं शर्त स्वीकार करे</b> <input type="checkbox"> </li>
-        </ul>
-
-        <button mat-raised-button color="warn" (click)="OnSubmit()">Submit</button>
-
-    </div>
 
 </div>

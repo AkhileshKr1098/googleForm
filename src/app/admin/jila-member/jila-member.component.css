@@ -1,0 +1,110 @@
+  /* for table starting always */
+  table {
+    width: 100%;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+  }
+
+  tr:hover {
+    background-color: #01a0dd;
+    color: rgb(253, 253, 253);
+  }
+
+  .mat-row:hover>.mat-cell {
+    color: white;
+  }
+
+  .mat-elevation-z8 {
+    overflow: auto;
+  }
+
+  #thead {
+    height: 45px;
+  }
+
+  .mat-paginator-container {
+    background: whitesmoke;
+  }
+
+
+  /* for sidebar scrollbar in all */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #cac7c7;
+    color: black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: rgb(110, 110, 110);
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+
+  .mat-menu-panel {
+    margin-top: 10px;
+  }
+
+  .action_btn {
+    color: whitesmoke;
+    background-color: #1d1f23;
+  }
+
+  .action_btn:hover {
+    background-color: #3f50b5 !important;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .boxdate {
+    height: 13px;
+  }
+
+  /* for details head */
+  .head {
+    height: 40px;
+    width: 100%;
+    background-color: #01a0dd;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  /* for count area */
+  .count_area {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 2px 5px;
+    box-sizing: border-box;
+    color: #1d1f23;
+    flex-wrap: wrap;
+    justify-items: center;
+  }
+
+  /* for search box */
+  #search_box {
+    border: none;
+    border-bottom: 1px solid #1d1f23;
+    outline: none;
+    padding: 5px 0px;
+    background-color: whitesmoke;
+  }
+
+  #search_box:hover::placeholder {
+    color: #1d1f23;
+  }
+
+  .mat-paginator-container {
+    background: whitesmoke;
+  }

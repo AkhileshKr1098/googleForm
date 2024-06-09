@@ -1,25 +1,23 @@
 <div id="wrapper">
-    <div class="center">
-        <h1>Print Priview Your Form </h1>
-
+    <div id="header">
+        <img src="../../assets/header.png" alt="" width="100%" height="250px">
     </div>
 
     <div class="print">
-
         <div class="container">
             <table width="100%">
 
                 <tr>
-                    <td colspan="2" >
-                        <h1>Registration Number :  <b>{{print_data.reg_no}}</b>
-                        </h1>
+                    <td colspan="2">
+                        <h3>Registration No : <b>BDM000000{{print_data.reg_no}}</b>
+                        </h3>
 
                     </td>
 
                     <td rowspan="5" colspan="2">
                         <div id="imgsign">
-                         <img src="{{imgUrl+print_data.photo}}" width="100%" height="150px">
-                        <img src="{{signUrl+print_data.sign}}" width="100%" height="50px">
+                            <img src="{{imgUrl+print_data.photo}}" width="100%" height="150px">
+                            <img src="{{signUrl+print_data.sign}}" width="100%" height="50px">
                         </div>
 
                     </td>
@@ -30,7 +28,7 @@
                         सदस्य :
                     </td>
                     <td>
-                       {{print_data.member}}
+                        {{print_data.member}}
                     </td>
 
 
@@ -40,7 +38,7 @@
                         Name :
                     </td>
                     <td>
-                       {{print_data.name}}
+                        {{print_data.name}}
                     </td>
 
 
@@ -70,7 +68,7 @@
                         Licence Number :
                     </td>
                     <td>
-                       {{print_data.dl}}
+                        {{print_data.dl}}
                     </td>
                 </tr>
 
@@ -94,7 +92,7 @@
                         Mobile Number :
                     </td>
                     <td>
-                       {{print_data.mobile_no}}
+                        {{print_data.mobile_no}}
                     </td>
                     <td class="col1">
                         Email id:
@@ -151,10 +149,10 @@
 
 
             </table>
-        
+
             <div class="tandc">
-                <h1><b>नियम एवं शर्त
-                    </b></h1>
+                <h1><b>नियम एवं शर्त</b></h1>
+
                 <ul>
                     <li>मेरे द्वारा उपर्युक्त दी गई सभी जानकारी सही एवं सत्य है ।</li>
                     <li>मैं अपनी स्वेच्छा से इस संघ का सदस्यता ग्रहण / प्राप्त कर रहा हूँ | </li>
@@ -184,9 +182,9 @@
                     </li>
 
 
-                
 
-                    <li> <b>नियम एवं शर्त स्वीकार  <input  type="checkbox" checked disabled></b></li>
+
+                    <li> <b>नियम एवं शर्त स्वीकार <input type="checkbox" checked disabled></b></li>
                 </ul>
 
 
@@ -195,11 +193,10 @@
         </div>
     </div>
 
-    <div class="center">
-       <button (click)="print()" mat-raised-button color="warn" > &nbsp; &nbsp;  Print &nbsp; &nbsp; </button>
-       <br><br>
-    </div>
-    <br>
 
+</div>
 
+<div class="center">
+    <button (click)="print()" mat-raised-button color="warn"> &nbsp; &nbsp; Print &nbsp; &nbsp; </button>
+    <br><br>
 </div>

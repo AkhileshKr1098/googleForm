@@ -9,11 +9,11 @@ import { SharedService } from 'src/app/servies/shared.service';
 import { UpdateuserComponent } from '../updateuser/updateuser.component';
 
 @Component({
-  selector: 'app-userlist',
-  templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.css']
+  selector: 'app-jila-member',
+  templateUrl: './jila-member.component.html',
+  styleUrls: ['./jila-member.component.css']
 })
-export class UserlistComponent {
+export class JilaMemberComponent {
   displayedColumns: string[] = ['id', 'reg_no', 'name', 'father', 'email', 'mobile_no', 'photo', 'action'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,21 +26,26 @@ export class UserlistComponent {
     private _shared: SharedService,
     private _dilog: MatDialog
 
-  ) { 
+  ) {
 
     this._shared.imgUrl.subscribe(
-    (res:any)=>{
-      this.url =  res
-    }
+      (res: any) => {
+        this.url = res
+      }
     )
   }
 
   ngOnInit() {
+ this.get_data()
+  }
+
+  get_data(){
     this._crud.get_user().subscribe(
       (res: any) => {
         console.log(res);
-        
-        this.dataSource = new MatTableDataSource(res.data);
+        const data = res.data.filter((item: any) => item.member.includes('जिला'));
+        this.dataSource = new MatTableDataSource(data);
+
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -57,10 +62,18 @@ export class UserlistComponent {
 
 
   onDelete(data: any) {
-    console.log(data);
-    
+    const formdata  = new  FormData()
+    formdata.append('id',data )
+    this._crud.userDelete(formdata).subscribe(
+      (res:any)=>{
+        if (res.success == 1) {
+          this.get_data()
+          alert('Delete Success')
+        }
+      }
+    )
   }
-
+  
   onPrint(data: any) {
 
     this._shared.print_data.next(data)
@@ -70,10 +83,9 @@ export class UserlistComponent {
 
   onEdit(data: any) {
     console.log(data);
-    this._dilog.open(UpdateuserComponent,{
-      data:data
+    this._dilog.open(UpdateuserComponent, {
+      data: data
     })
   }
-
 
 }

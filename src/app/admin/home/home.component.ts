@@ -8,10 +8,22 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   name = 'Admin'
-  
+  isLogin: any
+  login_data: any
   constructor(
     private _router: Router
-  ) {}
+  ) {
+    this.login_data = localStorage.getItem('loginData')
+    this.isLogin = JSON.parse(this.login_data)
+    console.log(this.isLogin);
+
+    if (!this.isLogin) {
+      this._router.navigate(['/login'])
+    } else {
+      console.log('is login')
+    }
+
+  }
 
   ImgUrl: string = ''
   staffLogin: boolean = true
@@ -28,13 +40,15 @@ export class HomeComponent {
   }
 
   logout() {
-    this._router.navigate(['/'])
+    this._router.navigate(['/login'])
+    localStorage.removeItem('loginData')
+    localStorage.clear()
   }
 
-  sidebar(){
+  sidebar() {
     if (this.onMenu == false) {
       this.onMenu = true
-    }else{
+    } else {
       this.onMenu = false
     }
   }

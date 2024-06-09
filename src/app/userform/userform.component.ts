@@ -52,14 +52,17 @@ export class UserformComponent implements OnInit {
 
 
   menber = [
-    { value: 'सामान्यअध्यक्ष' },
+    { value: 'सामान्य अध्यक्ष' },
     { value: 'जिला अध्यक्ष' },
+    { value: ' जिला सचिव' },
     { value: 'जिला उपाध्यक्ष' },
     { value: 'जिला कोषाध्यक्ष' },
     { value: 'जिला  स्तरीये  सदस्य' },
     { value: 'प्रखंड अध्यक्ष' },
     { value: 'प्रखंड सचिव' },
+    { value: ' प्रखण्ड उपाध्यक्ष' },
     { value: 'प्रखंड कोषाध्यक्ष' },
+    { value: ' प्रखण्ड स्तरीय सदस्य' },
     { value: 'राज्य स्तरीये  सदस्य' },
 
   ]
@@ -78,22 +81,22 @@ export class UserformComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      member: ['', Validators.required],
-      cdate: ['', Validators.required],
+      member: ['' ],
+      cdate: [new Date().toISOString().slice(0, 10)],
       name: ['', Validators.required],
-      father_name: ['', Validators.required],
-      dob: ['', Validators.required],
-      blodgroup: ['', Validators.required],
-      aadhar_no: ['', Validators.required],
+      father_name: [''],
+      dob: [''],
+      blodgroup: [''],
+      aadhar_no: [''],
       dl: ['', Validators.required],
       mobile_no: ['', Validators.required],
-      email: ['', Validators.required],
-      address: ['', Validators.required],
-      village: ['', Validators.required],
-      post: ['', Validators.required],
-      ps: ['', Validators.required],
-      dist: ['', Validators.required],
-      state: ['', Validators.required],
+      email: [''],
+      address: [''],
+      village: [''],
+      post: [''],
+      ps: [''],
+      dist: [''],
+      state: [''],
       pincode: [''],
     })
 
@@ -105,21 +108,21 @@ export class UserformComponent implements OnInit {
     this._crud.get_user().subscribe(
       (res: any) => {
         console.log(res.data);
-        this.regno =  `REGNO${res.data.length}`
-        const num = Number(res.data[0].reg_no)
-        this.insertData(1+num)
+        var num = 0
+        num = Number(res.data[0].reg_no)
+        this.insertData(1 + num)
       }
     )
 
     console.log(this.userForm.value);
 
-   
+
 
   }
 
-  insertData(reg : any){
+  insertData(reg: any) {
     console.log(reg);
-    
+
     if (!this.userForm.valid) {
       return alert('Plz.  Fill all required fildes')
     } else {
@@ -165,7 +168,7 @@ export class UserformComponent implements OnInit {
 
 
 
-  send_mail(reg:any) {
+  send_mail(reg: any) {
     const fromdata = new FormData()
     fromdata.append('to', this.userForm.get('email')?.value)
     fromdata.append('company', 'Green Soft')

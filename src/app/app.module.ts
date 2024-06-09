@@ -25,6 +25,8 @@ import {MatListModule} from '@angular/material/list';
 import { PrintPageComponent } from './print-page/print-page.component';
 import { ViewportComponent } from './viewport/viewport.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CustomeDirectiveDirective } from './custome-directive.directive';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
 
 
 
@@ -38,7 +40,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     UpdateFormComponent,
     PrintPageComponent,
     ViewportComponent,
-    HomepageComponent
+    HomepageComponent,
+    CustomeDirectiveDirective
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     MatPaginatorModule,
     MatSortModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderRouterModule
 
   ],
   providers: [],

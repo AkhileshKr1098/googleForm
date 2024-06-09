@@ -24,6 +24,11 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
+import { UpdateuserComponent } from './updateuser/updateuser.component';
+import { RajyMemberComponent } from './rajy-member/rajy-member.component';
+import { JilaMemberComponent } from './jila-member/jila-member.component';
+import { ParkhandMemberComponent } from './parkhand-member/parkhand-member.component';
+import { GenralMemberComponent } from './genral-member/genral-member.component';
 
 
 
@@ -33,7 +38,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     DashboardComponent,
     AddSubAdminComponent,
     SubAdminComponent,
-    UserlistComponent
+    UserlistComponent,
+    UpdateuserComponent,
+    RajyMemberComponent,
+    JilaMemberComponent,
+    ParkhandMemberComponent,
+    GenralMemberComponent
   ],
   imports: [
     CommonModule,
