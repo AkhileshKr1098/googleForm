@@ -68,10 +68,10 @@ export class UserformComponent implements OnInit {
   ]
 
   userForm !: FormGroup
-  profile_url: any = "../../assets/default_profile.png";
+  profile_url: any = "https://bihardrivermahasangh.com/registration/assets/default_profile.png";
   profile_img: any;
 
-  sign_url: any = "../../assets/sign.png";
+  sign_url: any = "https://bihardrivermahasangh.com/registration/assets/sign.png";
   sign_img: any;
   regno: string = ''
   constructor(
@@ -171,9 +171,9 @@ export class UserformComponent implements OnInit {
   send_mail(reg: any) {
     const fromdata = new FormData()
     fromdata.append('to', this.userForm.get('email')?.value)
-    fromdata.append('company', 'Green Soft')
+    fromdata.append('company', `बिहार ड्राइवर महासंघ`)
     fromdata.append('name', this.userForm.get('name')?.value)
-    fromdata.append('reg', reg)
+    fromdata.append('reg', `BDM000000${reg}`)
 
     this._crud.send_mail(fromdata).subscribe(
       (res: any) => {

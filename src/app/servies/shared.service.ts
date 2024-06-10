@@ -12,15 +12,15 @@ export class SharedService {
 
 
   // developement moed 
-  base_url =  new BehaviorSubject<string>('https://educatorbox.com/Development/API/')
-  imgUrl = new BehaviorSubject<string>('https://educatorbox.com/Development/assets/photo/')
-  signUrl = new BehaviorSubject<string>('https://educatorbox.com/Development/assets/sign/')
+  // base_url =  new BehaviorSubject<string>('https://educatorbox.com/Development/API/')
+  // imgUrl = new BehaviorSubject<string>('https://educatorbox.com/Development/assets/photo/')
+  // signUrl = new BehaviorSubject<string>('https://educatorbox.com/Development/assets/sign/')
 
 
   // producation mode
    
-  // base_url =  new BehaviorSubject<string>('https://bihardrivermahasangh.com/Registration/api/')
-  // imgUrl = new BehaviorSubject<string>('https://bihardrivermahasangh.com/Registration/assets/photo/')
-  // signUrl = new BehaviorSubject<string>('https://bihardrivermahasangh.com/Registration/assets/sign/')
+  base_url =  new BehaviorSubject<string>('https://bihardrivermahasangh.com/registration/api/')
+  imgUrl = new BehaviorSubject<string>('https://bihardrivermahasangh.com/registration/assets/photo/')
+  signUrl = new BehaviorSubject<string>('https://bihardrivermahasangh.com/registration/assets/sign/')
 
 }

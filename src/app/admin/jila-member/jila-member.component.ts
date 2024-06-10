@@ -75,7 +75,6 @@ export class JilaMemberComponent {
   }
   
   onPrint(data: any) {
-
     this._shared.print_data.next(data)
     this._routing.navigate(['printpage'])
 

@@ -36,6 +36,11 @@ export class UserlistComponent {
   }
 
   ngOnInit() {
+    this.get_data()
+  }
+
+
+  get_data(){
     this._crud.get_user().subscribe(
       (res: any) => {
         console.log(res);
@@ -50,15 +55,22 @@ export class UserlistComponent {
       }
     )
   }
-
   applyFilter(data: any) {
 
   }
 
 
   onDelete(data: any) {
-    console.log(data);
-    
+    const formdata  = new  FormData()
+    formdata.append('id',data )
+    this._crud.userDelete(formdata).subscribe(
+      (res:any)=>{
+        if (res.success == 1) {
+          this.get_data()
+          alert('Delete Success')
+        }
+      }
+    )
   }
 
   onPrint(data: any) {

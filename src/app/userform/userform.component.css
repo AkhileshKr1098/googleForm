@@ -12,6 +12,12 @@
   margin: 0px auto;
 }
 
+.loginbtn{
+  position: absolute;
+  top: 40px;
+  right: 10%;
+}
+
 #header img{
   width: 100%;
   height: 250px;
