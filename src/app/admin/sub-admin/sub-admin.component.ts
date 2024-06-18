@@ -17,9 +17,10 @@ export class SubAdminComponent implements OnInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  url: string = 'https://educatorbox.com/Development/assets/photo/'
+  url: string = ''
   login : any
   login_data : any
+  total_datano =0
   constructor(
     private _crud: CrudService,
     private _routing: Router,
@@ -32,6 +33,8 @@ export class SubAdminComponent implements OnInit {
     this.login =  localStorage.getItem('loginData')
     this.login_data = JSON.parse(this.login)
 
+    
+
   }
 
   get_data(){
@@ -41,6 +44,8 @@ export class SubAdminComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.total_datano = res.data.length
+
       },
       (error) => {
         console.log(error);
@@ -49,9 +54,11 @@ export class SubAdminComponent implements OnInit {
     )
   }
 
-  applyFilter(data: any) {
-
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 
   onAdd() {
     this.dilog.open(AddSubAdminComponent)

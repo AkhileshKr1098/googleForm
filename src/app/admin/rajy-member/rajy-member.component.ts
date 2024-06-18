@@ -19,7 +19,7 @@ export class RajyMemberComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   url: string = ''
-
+  total_datano =0
   constructor(
     private _crud: CrudService,
     private _routing: Router,
@@ -48,6 +48,8 @@ export class RajyMemberComponent {
         
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.total_datano = data.length
+
       },
       (error) => {
         console.log(error);
@@ -56,8 +58,9 @@ export class RajyMemberComponent {
     )
   }
   
-  applyFilter(data: any) {
-
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 

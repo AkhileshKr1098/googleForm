@@ -9,7 +9,7 @@
 
                 <tr>
                     <td colspan="2">
-                        <h3>Registration No : <b>BDM000000{{print_data.reg_no}}</b>
+                        <h3>Registration No : <b>BDM00000000{{print_data.reg_no}}</b>
                         </h3>
 
                     </td>
@@ -195,6 +195,8 @@
 </div>
 
 <div class="center">
-    <button (click)="print()" mat-raised-button color="warn"> &nbsp; &nbsp; Print &nbsp; &nbsp; </button>
+    <button (click)="back()" mat-raised-button color="warn"> &nbsp; &nbsp; Close &nbsp; &nbsp; </button> &nbsp;
+
+    <button (click)="print()" mat-raised-button color="primary"> &nbsp; &nbsp; Print &nbsp; &nbsp; </button>
     <br><br>
 </div>

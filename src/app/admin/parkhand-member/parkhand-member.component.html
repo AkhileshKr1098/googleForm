@@ -2,7 +2,7 @@
     <span class="add_form_title"> Prakhand Stariya Sadasya </span>
 </div>
 <div class="count_area">
-    <span class="notice_text">Total :5</span>
+    <span class="notice_text">Total : {{total_datano}}</span>
     <div class="search">
         <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
     </div>
@@ -27,7 +27,7 @@
 
         <ng-container matColumnDef="reg_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Registration No</th>
-            <td class="data" mat-cell *matCellDef="let row">BDM000000{{row.reg_no}}</td>
+            <td class="data" mat-cell *matCellDef="let row">BDM00000000{{row.reg_no}}</td>
         </ng-container>
 
         <ng-container matColumnDef="email">

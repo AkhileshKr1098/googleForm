@@ -3,7 +3,7 @@
     <button (click)="onAdd()" mat-flat-button color="warn">ADD <mat-icon>add</mat-icon></button>
 </div>
 <div class="count_area">
-    <span class="notice_text">Total :5</span>
+    <span class="notice_text">Total : {{total_datano}}</span>
     <div class="search">
         <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
     </div>

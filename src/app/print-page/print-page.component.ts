@@ -12,6 +12,8 @@ export class PrintPageComponent implements OnInit {
   print_data :any
   imgUrl : string = ''
   signUrl : string = ''
+  login_data :any
+  isLogin:any
   constructor(
     private _crud: CrudService,
     private _router : Router,
@@ -54,6 +56,18 @@ export class PrintPageComponent implements OnInit {
     window.print()
   }
 
+  back(){
+    this.login_data = localStorage.getItem('loginData')
+    this.isLogin = JSON.parse(this.login_data)
+    console.log(this.isLogin);
+
+    if (!this.isLogin) {
+      this._router.navigate(['/'])
+    } else {
+      this._router.navigate(['/admin'])
+    }
+
+  }
 
 }
 
