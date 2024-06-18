@@ -10,8 +10,7 @@
                 <mat-label>सदस्य</mat-label>
                 <mat-select formControlName="member">
                     <mat-option value="">कृपया चुनें</mat-option>
-                    <mat-option *ngFor="let option of menber" [value]="option.value">{{ option.value
-                        }}</mat-option>
+                    <mat-option *ngFor="let option of menber" [value]="option.value">{{ option.value}}</mat-option>
                 </mat-select>
             </mat-form-field>
 
@@ -64,11 +63,8 @@
                 <input matInput placeholder="अपना ईमेल आईडी दर्ज करें" formControlName="email">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>पता </mat-label>
-                <input matInput placeholder="अपना पता दर्ज करें" formControlName="address">
-            </mat-form-field>
-
+                <h1>पता </h1>
+            
             <mat-form-field appearance="fill">
                 <mat-label>गांव का नाम </mat-label>
                 <input matInput placeholder="अपने गांव का नाम दर्ज करें" formControlName="village">

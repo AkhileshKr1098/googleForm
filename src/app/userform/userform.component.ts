@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../servies/crud.service';
+import { SharedService } from '../servies/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userform',
@@ -58,11 +60,11 @@ export class UserformComponent implements OnInit {
     { value: 'जिला उपाध्यक्ष' },
     { value: 'जिला कोषाध्यक्ष' },
     { value: 'जिला  स्तरीये  सदस्य' },
-    { value: 'प्रखंड अध्यक्ष' },
-    { value: 'प्रखंड सचिव' },
-    { value: ' प्रखण्ड उपाध्यक्ष' },
-    { value: 'प्रखंड कोषाध्यक्ष' },
-    { value: ' प्रखण्ड स्तरीय सदस्य' },
+    { value: 'प्रखण्ड अध्यक्ष' },
+    { value: 'प्रखण्ड सचिव' },
+    { value: 'प्रखण्ड उपाध्यक्ष' },
+    { value: 'प्रखण्ड कोषाध्यक्ष' },
+    { value: 'प्रखण्ड स्तरीय सदस्य' },
     { value: 'राज्य स्तरीये  सदस्य' },
 
   ]
@@ -76,7 +78,9 @@ export class UserformComponent implements OnInit {
   regno: string = ''
   constructor(
     private fb: FormBuilder,
-    private _crud: CrudService
+    private _crud: CrudService,
+    private _shared : SharedService,
+    private _routing : Router
   ) { }
 
   ngOnInit(): void {
@@ -105,24 +109,33 @@ export class UserformComponent implements OnInit {
 
   OnSubmit() {
 
+    let reg_no = 0
     this._crud.get_user().subscribe(
       (res: any) => {
-        console.log(res.data);
-        var num = 0
-        num = Number(res.data[0].reg_no)
-        this.insertData(1 + num)
+        console.log(res);
+        if (res.success == 1) {
+          reg_no = Number(res.data[0].reg_no)
+          this.insertData(1 + reg_no)
+          this.send_mail(reg_no)
+        }else{
+          this.insertData(1 + reg_no)
+          this.send_mail(reg_no)
+
+        }
+       
+        
       }
-    )
+    ),
+    (error:any)=>{
+      console.log(error);
+      console.log('faild');
 
-    console.log(this.userForm.value);
-
-
+    }
 
   }
 
-  insertData(reg: any) {
-    console.log(reg);
 
+  insertData(reg: any) {
     if (!this.userForm.valid) {
       return alert('Plz.  Fill all required fildes')
     } else {
@@ -154,7 +167,7 @@ export class UserformComponent implements OnInit {
           if (res.success == 1) {
             alert("data insert successfully");
             this.userForm.reset()
-            this.send_mail(reg)
+            this.onPrint(res.data)
           }
         },
         (error) => {
@@ -167,13 +180,21 @@ export class UserformComponent implements OnInit {
 
 
 
+  onPrint(data: any) {
 
+    this._shared.print_data.next(data)
+    this._routing.navigate(['printpage'])
+
+  }
+
+
+  
   send_mail(reg: any) {
     const fromdata = new FormData()
     fromdata.append('to', this.userForm.get('email')?.value)
-    fromdata.append('company', `बिहार ड्राइवर महासंघ`)
     fromdata.append('name', this.userForm.get('name')?.value)
     fromdata.append('reg', `BDM000000${reg}`)
+    fromdata.append('mebpost',this.userForm.get('member')?.value )
 
     this._crud.send_mail(fromdata).subscribe(
       (res: any) => {
@@ -182,6 +203,7 @@ export class UserformComponent implements OnInit {
       }
     )
   }
+
 
   onProfile(files: any) {
     if (files.length === 0) {
