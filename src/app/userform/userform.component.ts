@@ -66,6 +66,10 @@ export class UserformComponent implements OnInit {
     { value: 'प्रखण्ड कोषाध्यक्ष' },
     { value: 'प्रखण्ड स्तरीय सदस्य' },
     { value: 'राज्य स्तरीय सदस्य' },
+    { value: 'प्रदेश अध्यक्ष'},
+    { value: 'प्रदेश उपाध्यक्ष' },
+    { value: 'प्रदेश सचिव' },
+    { value: 'प्रदेश कोषाध्यक्ष' },
 
   ]
 
@@ -108,7 +112,6 @@ export class UserformComponent implements OnInit {
 
 
   OnSubmit() {
-
     let reg_no = 0
     this._crud.get_user().subscribe(
       (res: any) => {
@@ -116,14 +119,9 @@ export class UserformComponent implements OnInit {
         if (res.success == 1) {
           reg_no = Number(res.data[0].reg_no)
           this.insertData(1 + reg_no)
-          this.send_mail(reg_no)
         }else{
           this.insertData(1 + reg_no)
-          this.send_mail(reg_no)
-
-        }
-       
-        
+        }        
       }
     ),
     (error:any)=>{
@@ -165,14 +163,17 @@ export class UserformComponent implements OnInit {
         (res: any) => {
           console.log(res);
           if (res.success == 1) {
-            alert("data insert successfully");
-            this.userForm.reset()
+            this.send_mail(reg)
             this.onPrint(res.data)
           }
         },
         (error) => {
           console.log(error);
-
+          console.log(error.error.message);
+           if(error.error.message == 'Mobile number already exists'){
+           alert("Mobile number already exists")
+           }
+          
         }
       )
     }
@@ -181,24 +182,21 @@ export class UserformComponent implements OnInit {
 
 
   onPrint(data: any) {
-
     this._shared.print_data.next(data)
     this._routing.navigate(['printpage'])
-
   }
-
-
   
   send_mail(reg: any) {
     const fromdata = new FormData()
     fromdata.append('to', this.userForm.get('email')?.value)
     fromdata.append('name', this.userForm.get('name')?.value)
-    fromdata.append('reg', `BDM000000${reg}`)
+    fromdata.append('reg', `BDM00000000${reg}`)
     fromdata.append('mebpost',this.userForm.get('member')?.value )
 
     this._crud.send_mail(fromdata).subscribe(
       (res: any) => {
         console.log(res);
+        this.userForm.reset()
 
       }
     )

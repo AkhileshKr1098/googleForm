@@ -27,6 +27,8 @@ import { ViewportComponent } from './viewport/viewport.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CustomeDirectiveDirective } from './custome-directive.directive';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ForprintPipe } from './forprint.pipe';
 
 
 
@@ -41,7 +43,9 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
     PrintPageComponent,
     ViewportComponent,
     HomepageComponent,
-    CustomeDirectiveDirective
+    CustomeDirectiveDirective,
+    ForprintPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,10 @@ import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
     NgxUiLoaderRouterModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

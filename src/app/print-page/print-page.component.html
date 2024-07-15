@@ -9,7 +9,7 @@
 
                 <tr>
                     <td colspan="2">
-                        <h3>Registration No : <b>BDM00000000{{print_data.reg_no}}</b>
+                        <h3>Registration No : <b>BDM{{print_data.reg_no | forprint:9}}</b>
                         </h3>
 
                     </td>
@@ -103,15 +103,20 @@
                 </tr>
 
                 <tr>
-                    <td class="col1" colspan="2">
-                        Address :
-                    </td>
+                 
                     
                     <td class="col1">
                         Village :
                     </td>
                     <td>
                         {{print_data.village}}
+                    </td>
+                  
+                    <td class="col1">
+                        Pin Code :
+                    </td>
+                    <td>
+                        {{print_data.pincode}}
                     </td>
                 </tr>
 

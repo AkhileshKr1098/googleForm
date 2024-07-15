@@ -52,6 +52,10 @@ export class LoginPageComponent {
 
 
 
+      },(error:any)=>{
+        console.log( error);
+        alert('Username and password incorrect')
+        
       }
     )
 

@@ -16,14 +16,20 @@ export class SadsayalistComponent implements OnInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  url: string = 'https://educatorbox.com/Development/assets/photo/'
+  url: string = ''
   login : any
   login_data : any
   constructor(
     private _crud: CrudService,
     private _routing: Router,
     private _shared : SharedService
-  ) { }
+  ) { 
+    this._shared.imgUrl.subscribe(
+      (res: any) => {
+        this.url = res
+      }
+    )
+  }
 
   ngOnInit() {
     
@@ -44,9 +50,11 @@ export class SadsayalistComponent implements OnInit {
     this.login_data = JSON.parse(this.login)
   }
 
-  applyFilter(data: any) {
-
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 
   onEdit(data: any) {
     console.log(data);

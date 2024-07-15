@@ -67,7 +67,7 @@
             
             <mat-form-field appearance="fill">
                 <mat-label>गांव का नाम </mat-label>
-                <input matInput placeholder="अपने गांव का नाम दर्ज करें" formControlName="village">
+                <input matInput placeholder="अपना गांव का नाम दर्ज करें" formControlName="village">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -80,22 +80,20 @@
                 <input matInput placeholder="अपनी थाना / पुलिस-स्टेशन " formControlName="ps">
             </mat-form-field>
 
+       
+
             <mat-form-field appearance="fill">
                 <mat-label>ज़िला</mat-label>
-                <mat-select formControlName="dist">
-                    <mat-option value="">कृपया चुनें</mat-option>
-                    <mat-option *ngFor="let option of districtOptions" [value]="option.value">{{ option.viewValue
-                        }}</mat-option>
-                </mat-select>
+                <input matInput placeholder="अपना ज़िला का नाम दर्ज करें " formControlName="dist">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label> राज्य</mat-label>
-                <mat-select formControlName="state">
-                    <mat-option value="बिहार">बिहार </mat-option>
-
-                </mat-select>
+                <mat-label>राज्य</mat-label>
+                <input matInput placeholder="अपना ज़िला का नाम दर्ज करें " formControlName="state">
             </mat-form-field>
+
+
+    
 
 
 
@@ -126,8 +124,6 @@
             </div>
 
         </form>
-
-
     </div>
     <div class="tandc">
         <h1><b>नियम एवं शर्त

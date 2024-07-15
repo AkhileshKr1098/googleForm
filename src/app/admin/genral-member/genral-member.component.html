@@ -27,7 +27,7 @@
 
         <ng-container matColumnDef="reg_no">
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Registration No</th>
-            <td class="data" mat-cell *matCellDef="let row">BDM00000000{{row.reg_no}}</td>
+            <td class="data" mat-cell *matCellDef="let row">BDM{{row.reg_no | zeroPadding:9}}</td>
         </ng-container>
 
         <ng-container matColumnDef="email">

@@ -29,6 +29,7 @@ import { RajyMemberComponent } from './rajy-member/rajy-member.component';
 import { JilaMemberComponent } from './jila-member/jila-member.component';
 import { ParkhandMemberComponent } from './parkhand-member/parkhand-member.component';
 import { GenralMemberComponent } from './genral-member/genral-member.component';
+import { ZeroPaddingPipe } from '../zero-padding.pipe';
 
 
 
@@ -43,7 +44,8 @@ import { GenralMemberComponent } from './genral-member/genral-member.component';
     RajyMemberComponent,
     JilaMemberComponent,
     ParkhandMemberComponent,
-    GenralMemberComponent
+    GenralMemberComponent,
+    ZeroPaddingPipe
   ],
   imports: [
     CommonModule,

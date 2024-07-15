@@ -43,7 +43,9 @@ export class RajyMemberComponent {
     this._crud.get_user().subscribe(
       (res: any) => {
         console.log(res);
-        const data = res.data.filter((item: any) => item.member.includes('राज्य'));
+        const data = res.data.filter((item: any) =>
+          item.member.includes('राज्य') || item.member.includes('प्रदेश')
+        );
         this.dataSource = new MatTableDataSource(data);
         
         this.dataSource.paginator = this.paginator;
