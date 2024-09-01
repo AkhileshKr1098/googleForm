@@ -1,25 +1,40 @@
 #wrapper{
     width: 100%;
-    height: 100vh;
+    height: auto;
     background-color: whitesmoke;
 
 }
-mat-toolbar{
-    display: flex;
-    justify-content: space-between;
+
+#header{
+  width: 80%;
+  height: 250px;
+  background-color: gray;
+  margin: 0px auto;
 }
 
+.loginbtn{
+  position: absolute;
+  top: 40px;
+  right: 10%;
+}
+
+#header img{
+  width: 100%;
+  height: 250px;
+}
+
+
 #form_area{
-    width: 80%;
-    height: calc(100vh - 90px);
+    width: 60%;
     margin: 0px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     background-color: white;
-    padding: 1% 10% 10px 10%; 
-    overflow-x: auto;
+    padding: 30px 10% 10px 10%; 
 }
+
+
 
 mat-form-field{
     width: 100%;
@@ -39,7 +54,7 @@ mat-form-field{
     margin-bottom: 20PX;
   }
   
-  img {
+  .user_image img {
     width: 40%;
     height: 100%; 
   }

@@ -29,6 +29,7 @@ import { CustomeDirectiveDirective } from './custome-directive.directive';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from "ngx-ui-loader";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ForprintPipe } from './forprint.pipe';
+import { UpdateUserFromComponent } from './update-user-from/update-user-from.component';
 
 
 
@@ -44,7 +45,8 @@ import { ForprintPipe } from './forprint.pipe';
     ViewportComponent,
     HomepageComponent,
     CustomeDirectiveDirective,
-    ForprintPipe
+    ForprintPipe,
+    UpdateUserFromComponent
     
   ],
   imports: [

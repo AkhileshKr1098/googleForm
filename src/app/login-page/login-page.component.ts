@@ -28,36 +28,48 @@ export class LoginPageComponent {
     })
   }
 
-  
+
 
   Std_login() {
     console.log(this.loginForm.value);
-
-    this._crud.login(this.loginForm.value).subscribe(
-      (res: any) => {
-        console.log(res);
-        console.log(res.uid[0]);
-        if (res.success == true) {
-          if (res.uid[0].deg == 'admin') {
-            this._router.navigate(['/admin'])
-            localStorage.setItem('loginData', JSON.stringify(res.uid[0]))
-
+    if (!this.loginForm.valid) {
+      alert('Please fill all the required fild')
+      return
+    } else {
+      this._crud.login(this.loginForm.value).subscribe(
+        (res: any) => {
+          console.log(res);
+  
+          if (res.success == false) {
+            alert('Username and password incorrect')
+            return
           }
-          if (res.uid[0].deg == 'user') {
-            this._router.navigate(['/user'])
-            localStorage.setItem('loginData', JSON.stringify(res.uid[0]))
+          if (res.success == true) {
+            if (res.uid[0].deg == 'admin') {
+              this._router.navigate(['/admin'])
+              localStorage.setItem('loginData', JSON.stringify(res.uid[0]))
 
+            }
+            if (res.uid[0].deg == 'user') {
+              this._router.navigate(['/user'])
+              localStorage.setItem('loginData', JSON.stringify(res.uid[0]))
+
+            }
+          } else {
+            alert('Username and password incorrect')
+            return
           }
+
+
+
+        }, (error: any) => {
+          console.log(error);
+          alert('Username and password incorrect')
+          return
+
         }
-
-
-
-      },(error:any)=>{
-        console.log( error);
-        alert('Username and password incorrect')
-        
-      }
-    )
+      )
+    }
 
   }
 }

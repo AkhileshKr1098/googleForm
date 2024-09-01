@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CrudService } from 'src/app/servies/crud.service';
 import { SharedService } from 'src/app/servies/shared.service';
 import { UpdateuserComponent } from '../updateuser/updateuser.component';
+import { UpdateFormComponent } from 'src/app/update-form/update-form.component';
 
 @Component({
   selector: 'app-userlist',
@@ -84,8 +85,7 @@ export class UserlistComponent {
   }
 
   onEdit(data: any) {
-    console.log(data);
-    this._dilog.open(UpdateuserComponent,{
+    this._dilog.open(UpdateFormComponent,{
       data:data
     })
   }

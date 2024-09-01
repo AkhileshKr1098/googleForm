@@ -1,24 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CrudService } from '../servies/crud.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SharedService } from '../servies/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-update-form',
-  templateUrl: './update-form.component.html',
-  styleUrls: ['./update-form.component.css']
+  selector: 'app-update-user-from',
+  templateUrl: './update-user-from.component.html',
+  styleUrls: ['./update-user-from.component.css']
 })
-export class UpdateFormComponent implements OnInit{
-  userForm !: FormGroup
-  profile_url: any = "https://bihardrivermahasangh.com/registration/assets/default_profile.png";
-  profile_img: any;
-
-  sign_url: any = "https://bihardrivermahasangh.com/registration/assets/sign.png";
-  sign_img: any;
-  regno: string = ''
-
-
+export class UpdateUserFromComponent {
   
   menber = [
     { value: 'सामान्य सदस्य' },
@@ -40,14 +31,19 @@ export class UpdateFormComponent implements OnInit{
 
   ]
 
+  userForm !: FormGroup
+  profile_url: any = "https://bihardrivermahasangh.com/registration/assets/default_profile.png";
+  profile_img: any;
+
+  sign_url: any = "https://bihardrivermahasangh.com/registration/assets/sign.png";
+  sign_img: any;
+  regno: string = ''
   constructor(
     private fb: FormBuilder,
-    private _crud:CrudService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-
-  ) {
-
-   }
+    private _crud: CrudService,
+    private _shared : SharedService,
+    private _routing : Router
+  ) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -71,12 +67,32 @@ export class UpdateFormComponent implements OnInit{
       parkhand: [''],
     })
 
-    this.userForm.patchValue(this.data)
+  }
+
+
+  OnSubmit() {
+    let reg_no = 0
+    this._crud.get_user().subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.success == 1) {
+          reg_no = Number(res.data[0].reg_no)
+          this.insertData(1 + reg_no)
+        }else{
+          this.insertData(1 + reg_no)
+        }        
+      }
+    ),
+    (error:any)=>{
+      console.log(error);
+      console.log('faild');
+
+    }
 
   }
 
 
-  OnSubmit(){
+  insertData(reg: any) {
     if (!this.userForm.valid) {
       return alert('Plz.  Fill all required fildes')
     } else {
@@ -99,20 +115,55 @@ export class UpdateFormComponent implements OnInit{
       userdata.append('state', this.userForm.get('state')?.value)
       userdata.append('pincode', this.userForm.get('pincode')?.value)
       userdata.append('parkhand', this.userForm.get('parkhand')?.value)
-      userdata.append('reg_no', '')
+      userdata.append('reg_no', reg)
       userdata.append('photo', this.profile_img)
       userdata.append('sign', this.sign_img)
 
-
-
+      this._crud.post_user(userdata).subscribe(
+        (res: any) => {
+          console.log(res);
+          if (res.success == 1) {
+            this.send_mail(reg)
+            this.onPrint(res.data)
+          }
+        },
+        (error) => {
+          console.log(error);
+          console.log(error.error.message);
+           if(error.error.message == 'Mobile number already exists'){
+           alert("Mobile number already exists")
+           }
+          
+        }
+      )
     }
   }
 
 
 
+  onPrint(data: any) {
+    this._shared.print_data.next(data)
+    this._routing.navigate(['printpage'])
+  }
+  
+  send_mail(reg: any) {
+    const fromdata = new FormData()
+    fromdata.append('to', this.userForm.get('email')?.value)
+    fromdata.append('name', this.userForm.get('name')?.value)
+    fromdata.append('reg', `BDM00000000${reg}`)
+    fromdata.append('mebpost',this.userForm.get('member')?.value )
+
+    this._crud.send_mail(fromdata).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.userForm.reset()
+
+      }
+    )
+  }
 
 
-  onProfile(files: any) {    
+  onProfile(files: any) {
     if (files.length === 0) {
       return;
     }

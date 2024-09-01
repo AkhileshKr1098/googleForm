@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this._router.navigate(['/'])
+    localStorage.removeItem('loginData')
   }
   sidebar() {
     if (this.onMenu == false) {

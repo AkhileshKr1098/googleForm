@@ -106,12 +106,16 @@ export class UserformComponent implements OnInit {
       dist: [''],
       state: [''],
       pincode: [''],
+      parkhand: [''],
     })
 
   }
 
 
   OnSubmit() {
+    console.log('error hai');
+    
+    return
     let reg_no = 0
     this._crud.get_user().subscribe(
       (res: any) => {
@@ -131,6 +135,7 @@ export class UserformComponent implements OnInit {
     }
 
   }
+
 
 
   insertData(reg: any) {
@@ -155,6 +160,7 @@ export class UserformComponent implements OnInit {
       userdata.append('ps', this.userForm.get('ps')?.value)
       userdata.append('state', this.userForm.get('state')?.value)
       userdata.append('pincode', this.userForm.get('pincode')?.value)
+      userdata.append('parkhand', this.userForm.get('parkhand')?.value)
       userdata.append('reg_no', reg)
       userdata.append('photo', this.profile_img)
       userdata.append('sign', this.sign_img)
@@ -162,6 +168,9 @@ export class UserformComponent implements OnInit {
       this._crud.post_user(userdata).subscribe(
         (res: any) => {
           console.log(res);
+          if (res.success == 0) {
+            alert('Registration number already exists.')
+          }
           if (res.success == 1) {
             this.send_mail(reg)
             this.onPrint(res.data)

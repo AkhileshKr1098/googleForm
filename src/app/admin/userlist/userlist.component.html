@@ -55,7 +55,7 @@
             <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
             <td class="data" mat-cell *matCellDef="let row"> 
                 <mat-icon (click)="onPrint(row)"  title="print">print</mat-icon> &nbsp;
-                <!-- <mat-icon (click)="onEdit(row)"  title="onEdit">edit</mat-icon> &nbsp; -->
+                <mat-icon (click)="onEdit(row)"  title="onEdit">edit</mat-icon> &nbsp;
                 <mat-icon   title="delete" (click)="onDelete(row.id)" >delete</mat-icon>
             </td>
         </ng-container>
