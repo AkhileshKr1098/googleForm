@@ -35,7 +35,7 @@ export class CrudService {
   }
 
   put_user(data: any, id: any) {
-    return this.http.put(`${this.base_url}user_update.php/${id}`, data)
+    return this.http.post(`${this.base_url}user_update.php?id=${id}`, data)
   }
 
   userDelete( id: any) {

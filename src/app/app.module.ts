@@ -67,8 +67,8 @@ import { UpdateUserFromComponent } from './update-user-from/update-user-from.com
     MatMenuModule,
     MatListModule,
     NgxUiLoaderModule,
-    NgxUiLoaderRouterModule
-
+    NgxUiLoaderRouterModule,
+    
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}

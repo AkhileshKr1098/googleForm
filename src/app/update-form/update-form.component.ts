@@ -2,14 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudService } from '../servies/crud.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-form',
   templateUrl: './update-form.component.html',
   styleUrls: ['./update-form.component.css']
 })
-export class UpdateFormComponent implements OnInit{
+export class UpdateFormComponent implements OnInit {
   userForm !: FormGroup
   profile_url: any = "https://bihardrivermahasangh.com/registration/assets/default_profile.png";
   profile_img: any;
@@ -17,9 +17,9 @@ export class UpdateFormComponent implements OnInit{
   sign_url: any = "https://bihardrivermahasangh.com/registration/assets/sign.png";
   sign_img: any;
   regno: string = ''
+  base_url: string = 'https://bihardrivermahasangh.com/registration/assets/sign/'
 
 
-  
   menber = [
     { value: 'सामान्य सदस्य' },
     { value: 'जिला अध्यक्ष' },
@@ -33,7 +33,7 @@ export class UpdateFormComponent implements OnInit{
     { value: 'प्रखण्ड कोषाध्यक्ष' },
     { value: 'प्रखण्ड स्तरीय सदस्य' },
     { value: 'राज्य स्तरीय सदस्य' },
-    { value: 'प्रदेश अध्यक्ष'},
+    { value: 'प्रदेश अध्यक्ष' },
     { value: 'प्रदेश उपाध्यक्ष' },
     { value: 'प्रदेश सचिव' },
     { value: 'प्रदेश कोषाध्यक्ष' },
@@ -42,17 +42,19 @@ export class UpdateFormComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private _crud:CrudService,
+    private _crud: CrudService,
+    public dialogRef: MatDialogRef<UpdateFormComponent>, // Inject MatDialogRef
+
     @Inject(MAT_DIALOG_DATA) public data: any,
 
   ) {
 
-   }
+  }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      member: ['' ],
-      cdate: [new Date().toISOString().slice(0, 10)],
+      member: [''],
+      cdate: [''],
       name: ['', Validators.required],
       father_name: [''],
       dob: [''],
@@ -69,14 +71,19 @@ export class UpdateFormComponent implements OnInit{
       state: [''],
       pincode: [''],
       parkhand: [''],
+      id: [''],
     })
 
     this.userForm.patchValue(this.data)
-
+    console.log(this.data);
+    this.sign_url = this.base_url + this.data?.sign
+    this.profile_url = 'https://bihardrivermahasangh.com/registration/assets/photo/' + this.data?.photo
   }
 
 
-  OnSubmit(){
+  OnSubmit() {
+    console.log(this.userForm.value);
+
     if (!this.userForm.valid) {
       return alert('Plz.  Fill all required fildes')
     } else {
@@ -99,11 +106,36 @@ export class UpdateFormComponent implements OnInit{
       userdata.append('state', this.userForm.get('state')?.value)
       userdata.append('pincode', this.userForm.get('pincode')?.value)
       userdata.append('parkhand', this.userForm.get('parkhand')?.value)
-      userdata.append('reg_no', '')
-      userdata.append('photo', this.profile_img)
-      userdata.append('sign', this.sign_img)
+      userdata.append('reg_no', this.data?.reg_no)
+      userdata.append('id', this.data?.id)
+
+      if (this.profile_img) {
+        userdata.append('photo', this.profile_img)
+      } else {
+        userdata.append('photo', this.data?.photo)
+      }
+
+      if (this.sign_img) {
+        userdata.append('photo', this.sign_img)
+      } else {
+        userdata.append('sign', this.data?.sign)
+
+      }
 
 
+
+      this._crud.put_user(userdata, this.data?.id).subscribe(
+        (res: any) => {
+          console.log('Update successful:', res);
+          if (res.success == 1) {
+            alert(res.message)
+            this.dialogRef.close();
+          }
+        },
+        (error) => {
+          console.error('API error:', error);
+        }
+      )
 
     }
   }
@@ -112,7 +144,7 @@ export class UpdateFormComponent implements OnInit{
 
 
 
-  onProfile(files: any) {    
+  onProfile(files: any) {
     if (files.length === 0) {
       return;
     }

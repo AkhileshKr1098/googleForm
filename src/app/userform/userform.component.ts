@@ -115,7 +115,6 @@ export class UserformComponent implements OnInit {
   OnSubmit() {
     console.log('error hai');
     
-    return
     let reg_no = 0
     this._crud.get_user().subscribe(
       (res: any) => {
