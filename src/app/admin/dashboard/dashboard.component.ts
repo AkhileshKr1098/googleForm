@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit , AfterViewInit {
 
       const jilaData = res.data.filter((item: any) => item.member.includes('जिला'));
       this.jilasajsye =  jilaData.length
-      const rajya = res.data.filter((item: any) => item.member.includes('राज्य'));
+      const rajya = res.data.filter((item: any) => item.member.includes('राज्य') || item.member.includes('प्रदेश'));
       this.Rajya =  rajya.length
 
       const parkhand = res.data.filter((item: any) => item.member.includes('प्रखण्ड'));

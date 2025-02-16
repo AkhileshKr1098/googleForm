@@ -17,7 +17,7 @@ export class CrudService {
 
 
   // developemt mode 
-    // base_url = 'https://educatorbox.com/Development/API/'
+  // base_url = 'https://educatorbox.com/Development/API/'
 
   // producation mode 
   base_url = 'https://bihardrivermahasangh.com/registration/api/'
@@ -26,6 +26,7 @@ export class CrudService {
   login(data: any) {
     return this.http.post(`${this.base_url}login.php`, data)
   }
+
   get_user() {
     return this.http.get(`${this.base_url}get_userdata.php`)
   }
@@ -38,23 +39,23 @@ export class CrudService {
     return this.http.post(`${this.base_url}user_update.php?id=${id}`, data)
   }
 
-  userDelete( id: any) {
-    return this.http.post(`${this.base_url}userDelete.php`,id)
+  userDelete(id: any) {
+    return this.http.post(`${this.base_url}userDelete.php`, id)
   }
 
-  add_sub_admin(data:any){
-    return this.http.post(`${this.base_url}/sub_admin.php`,data)
+  add_sub_admin(data: any) {
+    return this.http.post(`${this.base_url}/sub_admin.php`, data)
   }
 
-  get_sub_admin(){
+  get_sub_admin() {
     return this.http.get(`${this.base_url}/get_sub_admin.php`)
   }
 
-  delete_sub_admin(id:any){
-    return  this.http.post(`${this.base_url}/sub_admin_delete.php`, id)
+  delete_sub_admin(id: any) {
+    return this.http.post(`${this.base_url}/sub_admin_delete.php`, id)
   }
-  
-  send_mail(data:any){
+
+  send_mail(data: any) {
     return this.http.post(`${this.base_url}/send_email.php`, data)
   }
 
