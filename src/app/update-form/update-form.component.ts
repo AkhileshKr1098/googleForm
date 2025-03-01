@@ -116,13 +116,10 @@ export class UpdateFormComponent implements OnInit {
       }
 
       if (this.sign_img) {
-        userdata.append('photo', this.sign_img)
+        userdata.append('sign', this.sign_img)
       } else {
         userdata.append('sign', this.data?.sign)
-
       }
-
-
 
       this._crud.put_user(userdata, this.data?.id).subscribe(
         (res: any) => {
